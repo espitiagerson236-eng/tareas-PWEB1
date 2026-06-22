@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafeteria</title>
+  <link rel="stylesheet" href="comida.css">
+</head>
+<body>
+  <h1>Comida Rapida</h1>
+
+  <section class="productos">
+    <article class="producto" data-nombre="Asado" data-precio="40000">
+      <img src="asado.jpg" alt="Picada">
+      <h3>Asado Argentino</h3>
+      <p>$ 40000</p>
+      <button>Comprar</button>
+    </article>
+    <article class="producto" data-nombre="BandejaPaisa" data-precio="55000">
+      <img src="bandeja-paisa.jpg" alt="Bandeja">
+      <h3>Bandeja Paisa</h3>
+      <p>$ 55000</p>
+      <button>Comprar</button>
+    </article>
+    <article class="producto" data-nombre="Ceviche" data-precio="30000">
+      <img src="ceviche.jpg" alt="Ceviche">
+      <h3>Ceviche</h3>
+      <p>$ 30000</p>
+      <button>Comprar</button>
+    </article>
+    <article class="producto" data-nombre="Hamburguesa" data-precio="18000">
+      <img src="hamburguesa.jpg" alt="hamburguesa">
+      <h3>Hamburguesa sencilla</h3>
+      <p>$ 18000</p>
+      <button>Comprar</button>
+    </article>
+      
+    </article>
+    <article class="producto" data-nombre="pizza" data-precio="45000">
+      <img src="pizza.jpg" alt="pizzita">
+      <h3>Pizza Familiar</h3>
+      <p>$ 45000</p>
+      <button>Comprar</button>
+    </article>
+  </section>
+
+  <section class="productos">
+    
+    <article class="producto" data-nombre="ArepaRellena" data-precio="5000">
+      <img src="ArepaRellena.jpg" alt="ArepaRellena">
+      <h3>Arepa Rellena</h3>
+      <p>$ 5000</p>
+      <button>Comprar</button>
+    </article>
+    <article class="producto" data-nombre="Ajiaco" data-precio="25000">
+      <img src="Ajiaco.jpg" alt="Ajiaco">
+      <h3>Ajiaco</h3>
+      <p>$ 25000</p>
+      <button>Comprar</button>
+    </article>
+    <article class="producto" data-nombre="Pasta" data-precio="30000">
+      <img src="Pasta.jpg" alt="Carbonara">
+      <h3>Pasta Carbonara</h3>
+      <p>$ 30000</p>
+      <button>Comprar</button>
+    </article>
+    <article class="producto" data-nombre="Empanadas" data-precio="3500">
+      <img src="empanadas.jpg" alt="Empanadas">
+      <h3>Empanadas de carne</h3>
+      <p>$ 3500</p>
+      <button>Comprar</button>
+      
+    </article>
+    <article class="producto" data-nombre="Salchipapa" data-precio="20000">
+      <img src="salchipapa.jpg" alt="Salchipapa">
+      <h3>Salchipapa</h3>
+      <p>$ 20000</p>
+      <button>Comprar</button>
+    </article>
+  </section>
+  <section class="carrito">
+    <h2>Carrito de compras</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Item</th>
+          <th>Cantidad</th>
+          <th>Acción</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="5">Carrito vacío - comience a comprar!</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 id="totalGeneral">Total: $0</h3>
+  </section>
+  <script src="comida.js"></script>
+</body>
+</html>
