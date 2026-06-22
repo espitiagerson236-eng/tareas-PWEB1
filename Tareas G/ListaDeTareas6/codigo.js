@@ -21,7 +21,7 @@ function calcular() {
     let horaExactaIn = f1.getHours() + (f1.getMinutes() / 60);
     let horaExactaOut = f2.getHours() + (f2.getMinutes() / 60);
 
-    if (horaExactaIn < 5 || horaExactaIn > 12 || horaExactaOut < 5 || horaExactaOut > 12) {
+    if (horaExactaIn < 5 || horaExactaIn > 24 || (horaExactaOut < 5 && horaExactaOut !== 0) || horaExactaOut > 24) {
         alert("ERROR: El parqueadero esta cerrado. Solo funciona de 5:00 AM a 12:00 PM (Noche).");
         return;
     }
@@ -74,54 +74,56 @@ function pagar() {
     let vueltas = plata - total;
     let mensaje = "PAGO EXITOSO\n\nVueltas totales: $" + vueltas + "\n\nDesglose de cambio:\n";
 
-    if (vueltas >= 50000) {
-        let c50 = Math.floor(vueltas / 50000);
-        vueltas = vueltas % 50000;
+    let vueltasRestantes = vueltas;
+
+    if (vueltasRestantes >= 50000) {
+        let c50 = Math.floor(vueltasRestantes / 50000);
+        vueltasRestantes = vueltasRestantes % 50000;
         mensaje = mensaje + "- " + c50 + " billete(s) de $50000\n";
     }
-    if (vueltas >= 20000) {
-        let c20 = Math.floor(vueltas / 20000);
-        vueltas = vueltas % 20000;
+    if (vueltasRestantes >= 20000) {
+        let c20 = Math.floor(vueltasRestantes / 20000);
+        vueltasRestantes = vueltasRestantes % 20000;
         mensaje = mensaje + "- " + c20 + " billete(s) de $20000\n";
     }
-    if (vueltas >= 10000) {
-        let c10 = Math.floor(vueltas / 10000);
-        vueltas = vueltas % 10000;
+    if (vueltasRestantes >= 10000) {
+        let c10 = Math.floor(vueltasRestantes / 10000);
+        vueltasRestantes = vueltasRestantes % 10000;
         mensaje = mensaje + "- " + c10 + " billete(s) de $10000\n";
     }
-    if (vueltas >= 5000) {
-        let c5 = Math.floor(vueltas / 5000);
-        vueltas = vueltas % 5000;
+    if (vueltasRestantes >= 5000) {
+        let c5 = Math.floor(vueltasRestantes / 5000);
+        vueltasRestantes = vueltasRestantes % 5000;
         mensaje = mensaje + "- " + c5 + " billete(s) de $5000\n";
     }
-    if (vueltas >= 2000) {
-        let c2 = Math.floor(vueltas / 2000);
-        vueltas = vueltas % 2000;
+    if (vueltasRestantes >= 2000) {
+        let c2 = Math.floor(vueltasRestantes / 2000);
+        vueltasRestantes = vueltasRestantes % 2000;
         mensaje = mensaje + "- " + c2 + " billete(s) de $2000\n";
     }
-    if (vueltas >= 1000) {
-        let c1 = Math.floor(vueltas / 1000);
-        vueltas = vueltas % 1000;
+    if (vueltasRestantes >= 1000) {
+        let c1 = Math.floor(vueltasRestantes / 1000);
+        vueltasRestantes = vueltasRestantes % 1000;
         mensaje = mensaje + "- " + c1 + " billete(s) de $1000\n";
     }
-    if (vueltas >= 500) {
-        let m500 = Math.floor(vueltas / 500);
-        vueltas = vueltas % 500;
+    if (vueltasRestantes >= 500) {
+        let m500 = Math.floor(vueltasRestantes / 500);
+        vueltasRestantes = vueltasRestantes % 500;
         mensaje = mensaje + "- " + m500 + " moneda(s) de $500\n";
     }
-    if (vueltas >= 200) {
-        let m200 = Math.floor(vueltas / 200);
-        vueltas = vueltas % 200;
+    if (vueltasRestantes >= 200) {
+        let m200 = Math.floor(vueltasRestantes / 200);
+        vueltasRestantes = vueltasRestantes % 200;
         mensaje = mensaje + "- " + m200 + " moneda(s) de $200\n";
     }
-    if (vueltas >= 100) {
-        let m100 = Math.floor(vueltas / 100);
-        vueltas = vueltas % 100;
+    if (vueltasRestantes >= 100) {
+        let m100 = Math.floor(vueltasRestantes / 100);
+        vueltasRestantes = vueltasRestantes % 100;
         mensaje = mensaje + "- " + m100 + " moneda(s) de $100\n";
     }
-    if (vueltas >= 50) {
-        let m50 = Math.floor(vueltas / 50);
-        vueltas = vueltas % 50;
+    if (vueltasRestantes >= 50) {
+        let m50 = Math.floor(vueltasRestantes / 50);
+        vueltasRestantes = vueltasRestantes % 50;
         mensaje = mensaje + "- " + m50 + " moneda(s) de $50\n";
     }
 
@@ -132,7 +134,9 @@ function pagar() {
         '  "Tipo de vehiculo": "' + tipo + '",\n' +
         '  "Placa del vehiculo": "' + placa + '",\n' +
         '  "Tiempo que permanecio parqueado (en horas)": ' + horas.toFixed(2) + ',\n' +
-        '  "Valor a pagar": ' + total + '\n' +
+        '  "Valor a pagar": ' + total + ',\n' +
+        '  "Efectivo recibido": ' + plata + ',\n' +
+        '  "Vueltas entregadas": ' + vueltas + '\n' +
         "}";
 
     document.getElementById("json").value = textoJson;
